@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import character.storage.controller.model.TraumaData;
 import character.storage.entity.Trauma;
 import character.storage.controller.model.CharacterData;
+import character.storage.controller.model.TraitsData;
 import character.storage.service.StorageService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,6 +67,11 @@ public class CharacterStorageController {
 		log.info("All traumas have been retrieved");
 		return storageService.retrieveTrauma(ID);
 	}
+	@GetMapping("/Trait/{name}")
+	public TraitsData retrieveTraumaDataByID(@PathVariable String name) {
+		log.info("All traumas have been retrieved");
+		return storageService.retrieveTrait(name);
+	}
 	@PutMapping("/character/{name}/{traits}")
 	public CharacterData updateCharacter(@PathVariable String name, @PathVariable String traits, @RequestBody CharacterData characterData) {
 		log.info("Character: " + name + " has been updated");
@@ -106,3 +112,4 @@ public class CharacterStorageController {
 	
 	
 }
+
