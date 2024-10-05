@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import character.storage.controller.model.CharacterData;
+import character.storage.controller.model.TraitsData;
 import character.storage.controller.model.TraumaData;
 import character.storage.dao.CharacterDao;
 import character.storage.dao.TraitsDao;
@@ -174,6 +175,15 @@ public class StorageService {
 			deleteTrauma(trauma);
 		}
 		characterDao.delete(character);
+	}
+
+	public TraitsData retrieveTrait(String name) {
+		List<Traits> traits = traitsDao.findAll();
+		for (Traits traitt : traits) {
+			if (traitt.getTraits().equals(name)) {
+			return new TraitsData(traitsDao.save(traitt));
+			}}
+		return null;
 	}
 	
 
